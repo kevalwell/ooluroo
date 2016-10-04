@@ -1,9 +1,9 @@
 {
-  "name": "Ooluroo",
+  "name": "angular-seed",
   "private": true,
   "version": "0.0.0",
-  "description": "Drag and drop interface for laying out shapes using only Angular and HTML5.",
-  "repository": "https://github.com/kevalwell/ooluroo",
+  "description": "A starter project for AngularJS",
+  "repository": "https://github.com/angular/angular-seed",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.7.7",
