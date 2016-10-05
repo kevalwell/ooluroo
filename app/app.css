@@ -1,25 +1,40 @@
 /* app css stylesheet */
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+li{
+	list-style: none;
+	margin-left: 45px;
 }
 
-.menu:before {
-  content: "[";
+.over {
+  border: 2px dashed #000;
 }
 
-.menu:after {
-  content: "]";
+.shaped{
+	height: 100px;
+	width: 100px;
+	cursor: move
 }
 
-.menu > li {
-  display: inline;
+#shape-menu{
+	border: 8px solid black;
+	height: 200px;
+	width: 500px;
+	display: inline-flex;
 }
 
-.menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
+#docking-station{
+	border: 8px solid green;
+	height: 200px;
+	width: 500px;
 }
+
+#circle{
+	background: url(common/imgs/circle.png) left top no-repeat;
+}
+
+#square{
+	background: url(common/imgs/square.png) left top no-repeat;	
+}
+
+#triangle{
+	background: url(common/imgs/triangle.png) left top no-repeat;
+}	
