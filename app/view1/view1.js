@@ -16,12 +16,12 @@ angular.module('myApp.view1', ['ngRoute'])
     var dragSrcEl = null;
 
     function handleDragStart(e) {
-      // Target (this) element is the source node.
-      this.style.opacity = '0.4';
-      dragSrcEl = this;
+        // Target (this) element is the source node.
+        this.style.opacity = '0.4';
+        dragSrcEl = this;
 
-      e.dataTransfer.effectAllowed = 'move';
-      e.dataTransfer.setData('text/html', this.innerHTML);
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', this.innerHTML);
     }
 
     function handleDragOver(e) {
@@ -36,19 +36,18 @@ angular.module('myApp.view1', ['ngRoute'])
 
     function handleDrop(e) {
 
-      if (e.stopPropagation) {
-        e.stopPropagation();
-      }
+        if (e.stopPropagation) {
+            e.stopPropagation();
+        }
 
-      if (dragSrcEl != this) {
-        console.log(dragSrcEl,this)
-        var dId = dragSrcEl.id;
+        if (dragSrcEl != this) {
+            var dId = dragSrcEl.id;
 
-        dragSrcEl.id = this.id;
-        this.id = dId; 
-      }
+            dragSrcEl.id = this.id;
+            this.id = dId;
+        }
 
-      return false;
+        return false;
     }
 
     function handleDragEnd(e) {
@@ -62,9 +61,9 @@ angular.module('myApp.view1', ['ngRoute'])
 
         [].forEach.call(imgs, function(img) {
             img.addEventListener('dragstart', handleDragStart, false);
-            
+
             img.addEventListener('dragover', handleDragOver, false);
-            
+
             img.addEventListener('drop', handleDrop, false);
             img.addEventListener('dragend', handleDragEnd, false);
         });
