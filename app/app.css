@@ -1,6 +1,7 @@
 /* app css stylesheet */
 li{
 	list-style: none;
+	margin-left: 35px;
 }
 
 #shape-menu{
@@ -18,7 +19,8 @@ li{
 
 .shaped{
 	height: 100px;
-	width: 195px;
+	width: 120px;
+	cursor: move
 }
 
 #circle{
