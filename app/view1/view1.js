@@ -12,8 +12,19 @@ angular.module('myApp.view1', ['ngRoute'])
 .controller('View1Ctrl', ['$scope', function(sc) {
     var self = this;
     sc.shapes = [{ name: "circle" }, { name: "square" }, { name: "triangle" }];
-
     var dragSrcEl = null;
+    var saveShapes = [];
+
+    sc.submit = function() {
+        var imgs = document.querySelectorAll('#docking-station li .shaped');
+
+        angular.forEach(imgs, function(img, key) {
+            if (img.id) {
+                saveShapes[key] = { name: img.id };
+            }
+        });
+        console.log('Submit json shapes: ', saveShapes);
+    };
 
     function handleDragStart(e) {
         // Target (this) element is the source node.
@@ -51,7 +62,9 @@ angular.module('myApp.view1', ['ngRoute'])
     }
 
     function handleDragEnd(e) {
-        [].forEach.call(document.querySelectorAll('li .shaped'), function(img) {
+        var imgs = document.querySelectorAll('li .shaped');
+
+        angular.forEach(imgs, function(img) {
             img.style.opacity = '1';
         });
     }
@@ -59,7 +72,7 @@ angular.module('myApp.view1', ['ngRoute'])
     setTimeout(function() {
         var imgs = document.querySelectorAll('li .shaped');
 
-        [].forEach.call(imgs, function(img) {
+        angular.forEach(imgs, function(img) {
             img.addEventListener('dragstart', handleDragStart, false);
 
             img.addEventListener('dragover', handleDragOver, false);
