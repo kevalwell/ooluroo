@@ -13,11 +13,11 @@ angular.module('myApp.view1', ['ngRoute'])
     var self = this;
     sc.shapes = [{ name: "circle" }, { name: "square" }, { name: "triangle" }];
     var dragSrcEl = null;
-    var saveShapes = [];
 
     sc.submit = function() {
         var imgs = document.querySelectorAll('#docking-station li .shaped');
-
+        var saveShapes = [];
+        
         angular.forEach(imgs, function(img, key) {
             if (img.id) {
                 saveShapes[key] = { name: img.id };
