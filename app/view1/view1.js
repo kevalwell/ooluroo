@@ -9,8 +9,8 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', [function() {
+.controller('View1Ctrl', ['$scope', function(sc) {
 	var self   = this;
-	this.shapes = [{name: "circle"}, {name: "square"}, {name: "triangle"}];
+	sc.shapes = [{name: "circle"}, {name: "square"}, {name: "triangle"}];
 
 }]);
