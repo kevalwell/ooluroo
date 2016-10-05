@@ -34,48 +34,40 @@ angular.module('myApp.view1', ['ngRoute'])
         return false;
     }
 
-    function handleDragEnter(e) {
-        this.classList.add('over');
-    }
-
-    function handleDragLeave(e) {
-        this.classList.remove('over');
-    }
-
     function handleDrop(e) {
-      // this/e.target is current target element.
 
       if (e.stopPropagation) {
-        e.stopPropagation(); // Stops some browsers from redirecting.
+        e.stopPropagation();
       }
 
-      // Don't do anything if dropping the same column we're dragging.
       if (dragSrcEl != this) {
-        // Set the source column's HTML to the HTML of the column we dropped on.
-        dragSrcEl.innerHTML = this.innerHTML;
-        this.innerHTML = e.dataTransfer.getData('text/html');
+        console.log(dragSrcEl,this)
+        var dId = dragSrcEl.id;
+
+        dragSrcEl.id = this.id;
+        this.id = dId; 
       }
 
       return false;
     }
 
+    function handleDragEnd(e) {
+        [].forEach.call(document.querySelectorAll('li .shaped'), function(img) {
+            img.style.opacity = '1';
+        });
+    }
+
     setTimeout(function() {
-        var imgs = document.querySelectorAll('#shape-menu li .shaped');
-        console.log('here', imgs);
+        var imgs = document.querySelectorAll('li .shaped');
+
         [].forEach.call(imgs, function(img) {
             img.addEventListener('dragstart', handleDragStart, false);
-            img.addEventListener('dragenter', handleDragEnter, false);
+            
             img.addEventListener('dragover', handleDragOver, false);
-            img.addEventListener('dragleave', handleDragLeave, false);
+            
             img.addEventListener('drop', handleDrop, false);
             img.addEventListener('dragend', handleDragEnd, false);
         });
 
-        function handleDragEnd(e) {
-
-            [].forEach.call(imgs, function(img) {
-                img.classList.remove('over');
-            });
-        }
-    }, 1000);
+    }, 1);
 }]);
