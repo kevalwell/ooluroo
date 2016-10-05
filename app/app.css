@@ -23,3 +23,27 @@
   content: "|";
   padding-right: 0.3em;
 }
+
+#shape-menu{
+	border: 8px solid black;
+	height: 200px;
+	width: 500px;
+}
+
+#docking-station{
+	border: 8px solid green;
+	height: 200px;
+	width: 500px;
+}
+
+#circle{
+	background: url(common/imgs/circle.png) left top no-repeat;
+}
+
+#square{
+	background: url(common/imgs/square.png) left top no-repeat;	
+}
+
+#triangle{
+	background: url(common/imgs/triangle.png) left top no-repeat;
+}	
