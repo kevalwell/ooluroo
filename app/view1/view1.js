@@ -34,14 +34,6 @@ angular.module('myApp.view1', ['ngRoute'])
         return false;
     }
 
-    function handleDragEnter(e) {
-        this.classList.add('over');
-    }
-
-    function handleDragLeave(e) {
-        this.classList.remove('over');
-    }
-
     function handleDrop(e) {
 
       if (e.stopPropagation) {
@@ -49,6 +41,7 @@ angular.module('myApp.view1', ['ngRoute'])
       }
 
       if (dragSrcEl != this) {
+        console.log(dragSrcEl,this)
         var dId = dragSrcEl.id;
 
         dragSrcEl.id = this.id;
@@ -59,18 +52,19 @@ angular.module('myApp.view1', ['ngRoute'])
     }
 
     function handleDragEnd(e) {
-        [].forEach.call(document.querySelectorAll('#shape-menu li .shaped'), function(img) {
+        [].forEach.call(document.querySelectorAll('li .shaped'), function(img) {
             img.style.opacity = '1';
         });
     }
 
     setTimeout(function() {
-        var imgs = document.querySelectorAll('#shape-menu li .shaped');
+        var imgs = document.querySelectorAll('li .shaped');
+
         [].forEach.call(imgs, function(img) {
             img.addEventListener('dragstart', handleDragStart, false);
-            img.addEventListener('dragenter', handleDragEnter, false);
+            
             img.addEventListener('dragover', handleDragOver, false);
-            img.addEventListener('dragleave', handleDragLeave, false);
+            
             img.addEventListener('drop', handleDrop, false);
             img.addEventListener('dragend', handleDragEnd, false);
         });
