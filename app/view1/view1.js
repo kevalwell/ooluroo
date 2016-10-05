@@ -43,25 +43,29 @@ angular.module('myApp.view1', ['ngRoute'])
     }
 
     function handleDrop(e) {
-      // this/e.target is current target element.
 
       if (e.stopPropagation) {
-        e.stopPropagation(); // Stops some browsers from redirecting.
+        e.stopPropagation();
       }
 
-      // Don't do anything if dropping the same column we're dragging.
       if (dragSrcEl != this) {
-        // Set the source column's HTML to the HTML of the column we dropped on.
-        dragSrcEl.innerHTML = this.innerHTML;
-        this.innerHTML = e.dataTransfer.getData('text/html');
+        var dId = dragSrcEl.id;
+
+        dragSrcEl.id = this.id;
+        this.id = dId; 
       }
 
       return false;
     }
 
+    function handleDragEnd(e) {
+        [].forEach.call(document.querySelectorAll('#shape-menu li .shaped'), function(img) {
+            img.style.opacity = '1';
+        });
+    }
+
     setTimeout(function() {
         var imgs = document.querySelectorAll('#shape-menu li .shaped');
-        console.log('here', imgs);
         [].forEach.call(imgs, function(img) {
             img.addEventListener('dragstart', handleDragStart, false);
             img.addEventListener('dragenter', handleDragEnter, false);
@@ -71,11 +75,5 @@ angular.module('myApp.view1', ['ngRoute'])
             img.addEventListener('dragend', handleDragEnd, false);
         });
 
-        function handleDragEnd(e) {
-
-            [].forEach.call(imgs, function(img) {
-                img.classList.remove('over');
-            });
-        }
-    }, 1000);
+    }, 1);
 }]);

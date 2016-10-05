@@ -2,6 +2,7 @@
 li{
 	list-style: none;
 	margin-left: 45px;
+	margin-top: 10%;
 }
 
 .over {
@@ -21,12 +22,6 @@ li{
 	display: inline-flex;
 }
 
-#docking-station{
-	border: 8px solid green;
-	height: 200px;
-	width: 500px;
-}
-
 #circle{
 	background: url(common/imgs/circle.png) left top no-repeat;
 }
@@ -38,3 +33,13 @@ li{
 #triangle{
 	background: url(common/imgs/triangle.png) left top no-repeat;
 }	
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
