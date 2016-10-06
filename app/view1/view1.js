@@ -16,7 +16,7 @@ angular.module('myApp.view1', ['ngRoute'])
 
     sc.submit = function() {
         var imgs = document.querySelectorAll('#docking-station li .shaped');
-        var saveShapes = [];
+        var saveShapes = {};
         
         angular.forEach(imgs, function(img, key) {
             if (img.id) {
